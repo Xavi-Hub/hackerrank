@@ -1,0 +1,23 @@
+#!/bin/python3
+
+# PROBLEM:
+# http://hr.gs/ec3
+
+import math
+import os
+import random
+import re
+import sys
+
+# Complete the sherlockAndAnagrams function below.
+def sherlockAndAnagrams(s):
+    anagram_indices = []
+    for i in range(len(s)):
+        for j in range(i+1, len(s)):
+            if s[i] == s[j]:
+                anagram_indices.append( [ [i,i], [j,j] ] )
+    return anagram_indices
+
+# abcdefg  aaadcfeaa
+
+print(sherlockAndAnagrams('aabbdfdsafsbaa'))
