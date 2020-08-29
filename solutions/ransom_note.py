@@ -1,5 +1,8 @@
 #!/bin/python3
 
+# PROBLEM:
+# http://hr.gs/16xx
+
 import math
 import os
 import random
