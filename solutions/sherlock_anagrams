@@ -9,15 +9,27 @@ import random
 import re
 import sys
 
+anagrams = {}
+
+def n_choose_two(n):
+    return n * (n - 1) / 2
+
 # Complete the sherlockAndAnagrams function below.
 def sherlockAndAnagrams(s):
-    anagram_indices = []
-    for i in range(len(s)):
-        for j in range(i+1, len(s)):
-            if s[i] == s[j]:
-                anagram_indices.append( [ [i,i], [j,j] ] )
-    return anagram_indices
+    global anagrams
+    anagrams = {}
 
-# abcdefg  aaadcfeaa
-
-print(sherlockAndAnagrams('aabbdfdsafsbaa'))
+    # Iterate through all substrings, updating count of sorted substring
+    for length in range(1, len(s)): # Length of anagrams we're looking for
+        for pos in range(len(s) - length + 1):    # Position of possible anagram start
+            substring = s[pos:pos+length]
+            sorted_sub = ''.join(sorted(substring))
+            if sorted_sub in anagrams:
+                anagrams[sorted_sub] += 1
+            else:
+                anagrams[sorted_sub] = 1
+    
+    total = 0
+    for count in anagrams.values():
+        total += n_choose_two(count)
+    return int(total)
