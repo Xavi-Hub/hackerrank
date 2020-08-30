@@ -5,8 +5,6 @@
 # PROBLEM:
 # http://hr.gs/16xx
 
-#!/bin/python3
-
 import math
 import os
 import random
